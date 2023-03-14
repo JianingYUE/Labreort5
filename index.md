@@ -22,7 +22,7 @@ For example:
   }
 ```
 
-This is the test code to check `testAverageWithoutLowest1` method. I will also change some other test code to test the return results of other methods
+This is the test code to check `testAverageWithoutLowest1` method in `ArrayExample.java`. I will also change some other test code to test the return results of other methods
 
 And the output shows what the method should return and what results were actually returned. 
 ---
@@ -42,3 +42,53 @@ Then we can see the result like this:
 ---
 
 It shows Test code with data bias with the expected value and actually value, then I can go back to `testAverageWithoutLowest1` to find the bug and fix it.
+
+Example:
+
+> The code befor I fixed it. 
+
+```
+static double averageWithoutLowest(double[] arr) {
+    if(arr.length < 2) { return 0.0; }
+    double lowest = arr[0];
+    for(double num: arr) {
+      if(num < lowest) { lowest = num; }
+    }
+    double sum = 0;
+    for(double num: arr) {
+      if(num != lowest) { sum += num; }
+    }
+    return sum / (arr.length - 1);
+  }
+```
+
+> The code after I fixed it.
+
+```
+static double averageWithoutLowest(double[] arr) {
+    if(arr.length < 2) { return 0.0; }
+    double lowest = arr[0];
+    for(double num: arr) {
+      if(num < lowest) { lowest = num; }
+    }
+    double sum = 0;
+    for(double num: arr) {
+      sum += num;
+    }
+    sum -= lowest; 
+    return sum / (arr.length - 1);
+  }
+```
+
+Results returned according to the test code. The problem is the befor code only calculated the sum and lowest, so I added a calculation code to subtracts the lowest from the sum.
+---
+
+Then run the test with the same input again to check is there still bugs. And I fixed it correctly.
+
+> Here is the screenshot after I fixed the bug and run the text code.
+![Image](lab5-2.png)
+---
+
+Then I use same way to fix other method's bugs.
+
+After week 7's study, we learned namo to fix bugs through the terminal
