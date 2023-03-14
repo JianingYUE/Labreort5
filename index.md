@@ -91,4 +91,6 @@ Then run the test with the same input again to check is there still bugs. And I 
 
 Then I use same way to fix other method's bugs.
 
-After week 7's study, we learned namo to fix bugs through the terminal
+After week 7's study, we learned namo to fix bugs through the terminal.
+
+use `namo ArrayExamples.java` to call the window and fix bugs. Replaces the return code file modification procedure.
